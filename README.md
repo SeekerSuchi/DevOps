@@ -42,11 +42,19 @@ Welcome to the **DevOps Engineering Laboratory Repository**. This repository con
 │   ├── app.py                          # Flash Sale Flask app (/, /buy, /health)
 │   ├── Dockerfile                      # Container build definition (gunicorn)
 │   └── flashsale-replicaset.yaml       # ReplicaSet + ClusterIP Service manifest
-└── exercise4/                          # Docker Exercise 4: Multi-Container Networking
+├── exercise4/                          # Docker Exercise 4: Multi-Container Networking
+│   ├── README.md                       # Lab guide & Q&A
+│   ├── app.py                          # Simple Flask REST API (/about endpoint)
+│   ├── requirements.txt                # Python dependencies (Flask==2.0.1)
+│   └── Dockerfile                      # Docker container build definition
+└── exercise5/                          # Docker Exercise 5: Security with AppArmor & Python
     ├── README.md                       # Lab guide & Q&A
-    ├── app.py                          # Simple Flask REST API (/about endpoint)
-    ├── requirements.txt                # Python dependencies (Flask==2.0.1)
-    └── Dockerfile                      # Docker container build definition
+    ├── app.py                          # Secure Flask application (port 5000)
+    ├── Dockerfile                      # Container build definition
+    ├── requirements.txt                # Python dependencies (flask, docker)
+    ├── my-apparmor-profile             # AppArmor profile restricting access
+    ├── apply_apparmor.py               # Docker SDK script to apply AppArmor profile
+    └── test_restricted_actions.py      # Script to test AppArmor-restricted actions
 ```
 
 ---
@@ -59,6 +67,7 @@ Welcome to the **DevOps Engineering Laboratory Repository**. This repository con
 | **[Exercise 2](./exercise2/README.md)** | **Deploy Flask App on Minikube** | Deploying Flask app via local Docker daemon, kubectl, Deployment & NodePort Service | Completed |
 | **[Exercise 3](./exercise3/README.md)** | **Scaling with ReplicaSets** | Flash Sale scenario — scaling a Flask app from 3 to 5 pods, observing self-healing on a single-node Minikube cluster | Completed |
 | **[Exercise 4](./exercise4/README.md)** | **Docker Networking** | Multi-container app with Flask, MySQL & Redis on a custom bridge network; testing inter-container DNS resolution | Completed |
+| **[Exercise 5](./exercise5/README.md)** | **Docker Security with AppArmor** | Securing a Flask container with an AppArmor profile; applying & verifying it via the Docker SDK for Python; testing restricted actions | Completed |
 
 ---
 
@@ -68,3 +77,4 @@ Welcome to the **DevOps Engineering Laboratory Repository**. This repository con
 - **Minikube** (Local Kubernetes Cluster)
 - **kubectl** (Kubernetes CLI)
 - **Git**
+- **AppArmor** (`apparmor-utils` package — required for Exercise 5, Linux only)
