@@ -47,14 +47,21 @@ Welcome to the **DevOps Engineering Laboratory Repository**. This repository con
 │   ├── app.py                          # Simple Flask REST API (/about endpoint)
 │   ├── requirements.txt                # Python dependencies (Flask==2.0.1)
 │   └── Dockerfile                      # Docker container build definition
-└── exercise5/                          # Docker Exercise 5: Security with AppArmor & Python
+├── exercise5/                          # Docker Exercise 5: Security with AppArmor & Python
+│   ├── README.md                       # Lab guide & Q&A
+│   ├── app.py                          # Secure Flask application (port 5000)
+│   ├── Dockerfile                      # Container build definition
+│   ├── requirements.txt                # Python dependencies (flask, docker)
+│   ├── my-apparmor-profile             # AppArmor profile restricting access
+│   ├── apply_apparmor.py               # Docker SDK script to apply AppArmor profile
+│   └── test_restricted_actions.py      # Script to test AppArmor-restricted actions
+└── exercise6/                          # Monitoring Exercise 6: Real-Time Ops Monitoring & Alerting
     ├── README.md                       # Lab guide & Q&A
-    ├── app.py                          # Secure Flask application (port 5000)
-    ├── Dockerfile                      # Container build definition
-    ├── requirements.txt                # Python dependencies (flask, docker)
-    ├── my-apparmor-profile             # AppArmor profile restricting access
-    ├── apply_apparmor.py               # Docker SDK script to apply AppArmor profile
-    └── test_restricted_actions.py      # Script to test AppArmor-restricted actions
+    └── delivery_monitoring/
+        ├── delivery_metrics.py         # Python script to simulate & expose Prometheus metrics
+        ├── prometheus.yml              # Prometheus scrape & alert-rule configuration
+        ├── alert_rules.yml             # Alert rules (high pending deliveries, high avg time)
+        └── Jenkinsfile                 # Jenkins pipeline (Docker pre-check → build → deploy)
 ```
 
 ---
@@ -68,6 +75,7 @@ Welcome to the **DevOps Engineering Laboratory Repository**. This repository con
 | **[Exercise 3](./exercise3/README.md)** | **Scaling with ReplicaSets** | Flash Sale scenario — scaling a Flask app from 3 to 5 pods, observing self-healing on a single-node Minikube cluster | Completed |
 | **[Exercise 4](./exercise4/README.md)** | **Docker Networking** | Multi-container app with Flask, MySQL & Redis on a custom bridge network; testing inter-container DNS resolution | Completed |
 | **[Exercise 5](./exercise5/README.md)** | **Docker Security with AppArmor** | Securing a Flask container with an AppArmor profile; applying & verifying it via the Docker SDK for Python; testing restricted actions | Completed |
+| **[Exercise 6](./exercise6/README.md)** | **Real-Time Monitoring & Alerting** | Simulating delivery metrics with Python, scraping with Prometheus, visualizing with Grafana dashboards, firing alerts, and automating the pipeline with Jenkins | Completed |
 
 ---
 
@@ -78,3 +86,7 @@ Welcome to the **DevOps Engineering Laboratory Repository**. This repository con
 - **kubectl** (Kubernetes CLI)
 - **Git**
 - **AppArmor** (`apparmor-utils` package — required for Exercise 5, Linux only)
+- **Prometheus** (`prom/prometheus` Docker image — required for Exercise 6)
+- **Grafana** (`grafana/grafana` Docker image — required for Exercise 6)
+- **Jenkins** (`jenkins/jenkins:lts` Docker image — required for Exercise 6)
+- **prometheus-client** (`pip3 install prometheus-client` — required for Exercise 6)
